@@ -1,0 +1,115 @@
+var unit = {
+	formatTntNumber: function (text) {
+		return parseInt(text) + ''
+	},
+	formatFloatNumber: function (value) {
+		var value = value + ''
+		// var value = (value / 1).toString()
+		if (value.indexOf('.') > -1) {
+			return '.' + value.split('.')[1]
+		} else {
+			return ''
+		}
+	}
+}
+var num = {
+	intNum: function (num) {
+		var thisNum = (num || 0).toString().split('.'); //判断如果有小数点就分割这个数为一个数组
+		var num = thisNum[0]; //截取小数点前面的部分保存
+		var result = ''; //最后结果
+		while (num.length > 3) { //循环每三位添加一个逗号
+			result = ',' + num.slice(-3) + result;
+			num = num.slice(0, num.length - 3);
+		}
+		if (num) {
+			result = num + result;
+		}
+		return result;
+	},
+	floatNum: function (num) {
+		var float = parseFloat(num);
+		if (isNaN(float)) {
+			return false;
+		}
+		var float = Math.round(num * 100) / 100;
+		var shu = float.toString();
+		var rs = shu.indexOf('.');
+		if (rs < 0) {
+			rs = shu.length;
+			shu += '.';
+		}
+		while (shu.length <= rs + 2) {
+			shu += '0';
+		}
+		return shu.substring(shu.length - 2);
+	}
+}
+// 数字转换
+var numberFormat = function (value) {
+	var param = ''
+	param = value >= 10000 ? (((value - value % 1000) / 10000)) : (value)
+	return param;
+}
+
+function toDecimal2NoZero(x) {
+	var f = Math.round(x * 100) / 100;
+	var s = f.toString();
+	return s;
+}
+
+function tranNumber(num, point) {
+	// 将数字转换为字符串,然后通过split方法用.分隔,取到第0个
+	var numStr = num.toString().split('.')[0]
+	if(numStr.length<4){ // 判断数字有多长,如果小于4,,表示千以内的数字,让其直接显示
+		// console.log(numStr);
+		return numStr;
+	}else if (numStr.length>=4 &&numStr.length<5) {
+		var decimal = numStr.substring(numStr.length - 3, numStr.length - 3 + point)
+		// console.log(decimal);
+		return parseFloat(parseInt(num / 1000) + '.' + decimal) + 'k'
+	} else if (numStr.length >=5 && numStr.length <= 8) { // 如果数字大于6位,小于8位,让其数字后面加单位万
+		var decimal = numStr.substring(numStr.length - 4, numStr.length - 4 + point)
+		// console.log(decimal);
+		return parseFloat(parseInt(num / 10000) + '.' + decimal) + 'w'
+	} else if (numStr.length > 8) { // 如果数字大于8位,让其数字后面加单位亿
+		var decimal = numStr.substring(numStr.length - 8, numStr.length - 8 + point);
+		// console.log(decimal);
+		return parseFloat(parseInt(num / 100000000) + '.' + decimal) + '亿'
+	}
+}
+function transmun(num){
+	var  shu;
+ if(num > 9999){//大于9999显示x.xx万
+	 shu=((num/1000)/10).toFixed(1) + 'W';
+ }else if(num > 999){//大于999显示x.xx千
+	shu=((num/100)/10).toFixed(1) + 'K';
+ }else{
+	shu=num
+ }
+ return shu
+}
+function priceTran(value){
+	value = value.toString()
+	var price={}
+	if (value.lastIndexOf(".") >= 0) {   
+		var pointsPointsNum = value.indexOf('.')
+		price.price_int = value.substring(0, pointsPointsNum)    // 商品价钱的整数
+		price.price_decimal = value.substring(pointsPointsNum)    // 商品价钱的小数
+	} else {
+		price.price_int = value;   // 商品价钱的整数
+		price.price_decimal = ".00";    // 商品价钱的小数，没有小数是加'.00'
+	}
+	return price
+}
+
+module.exports = {
+	formatTntNumber: unit.formatTntNumber,
+	formatFloatNumber: unit.formatFloatNumber,
+	intNum: num.intNum,
+	floatNum: num.floatNum,
+	numberFormat: numberFormat,
+	toDecimal2NoZero: toDecimal2NoZero,
+	tranNumber: tranNumber,   //转换 截取保留两位小数
+	transmun:transmun,     //转换 四舍五入保留两位小数
+	priceTran:priceTran
+}

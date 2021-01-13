@@ -1,0 +1,25 @@
+/* pages/Login/Login.wxss */
+.login-bt {
+  width: 400rpx;
+  height: 88rpx;
+  background: linear-gradient(#03c963 0%, #15e97a 100%);
+  border-radius: 44rpx;
+  position: relative;
+  font-size: 31rpx;
+  color: #FAFAFA;
+}
+
+.get-userinfo-menu {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400rpx;
+  height: 88rpx;
+  opacity: 0;
+}
+
+.get-userinfo-menu::after {
+  border: none;
+}

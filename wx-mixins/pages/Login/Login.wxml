@@ -1,0 +1,17 @@
+<!--pages/Login/Login.wxml-->
+<view class="content">
+	
+	<image src="icon/login_icon.png" style="margin-top: 72rpx;width: 695rpx;height: 591rpx;"  ></image>
+
+	<view class="login-bt fr-c" style="margin-top: 80rpx;" wx:if='{{!isShowPhone}}'>
+		<image src="icon/wx_icon.png" style="width: 50rpx;height: 50rpx;margin-right: 12rpx;" ></image>
+		<text>微信一键登录</text>
+		<button open-type="getUserInfo" class="get-userinfo-menu" bindgetuserinfo="_iKnow" ></button>
+	</view>
+	<view class="login-bt fr-c" style="margin-top: 80rpx;background:#5a79e9;" wx:if='{{isShowPhone}}'>
+		<image src="icon/phone_icon.png" style="width: 50rpx;height: 50rpx;margin-right: 12rpx;" ></image>
+		<text>授权获取手机号</text>
+		<button open-type="getPhoneNumber" class="get-userinfo-menu" bindgetphonenumber="getPhoneNumber" ></button>
+	</view>
+	
+</view>
