@@ -1,0 +1,10 @@
+<!--components/nodata/index.wxml-->
+<view class="view-no-use">
+
+  <view style="width: 100%;height: {{height}}rpx;"></view>
+
+  <image style="width: 300rpx;height: 300rpx;" src="../nodata/no_use.png" wx:if='{{isImg}}'></image>
+
+  <text style="margin-top: 20rpx;">{{msg}}</text>
+  
+</view>

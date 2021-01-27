@@ -1,8 +1,1 @@
-<!--pages/Home/Home.wxml-->
-<view class="content p-30">
-  <view class="list-shades fr-b-c w-1" bindtap="_login"  >
-    <text>登录</text>
-    <text>go</text>
-  </view>
-</view>
-
+<view></view>

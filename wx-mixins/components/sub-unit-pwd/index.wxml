@@ -1,0 +1,18 @@
+<!-- 弹出框 -->
+<view class="pay-pop-view" bindtap="popUpno">
+	<view class="pay-pop-view-item" catchtap="onpopFile">
+		<view class="nopassword" catchtap="popUpno">
+			<text>请输入支付密码</text>
+			<image class="pay-pop-view-item-image" src="{{failIcon}}"></image>
+		</view>
+		<view class="indep-password-box-2" catchtap="onFocus" >
+    <block wx:for="{{6}}" wx:key="index">
+      <input class="input-show-item" password disabled value="{{index<=inputValue.length-1?1:''}}" ></input>
+    </block>
+    <input style="width:0;height:0;" focus="{{focus}}" type="number" maxlength="6" bindinput="onpwdInput" ></input>
+		</view>
+		<view class="nopassword" catchtap="fogetpwd">
+			<text>忘记密码？</text>
+		</view>
+	</view>
+</view>

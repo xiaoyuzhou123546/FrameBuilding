@@ -23,7 +23,6 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -37,11 +36,12 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "useApiHostProcess": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.1",
-  "appid": "wxa4e4453ada144997",
+  "libVersion": "2.14.0",
+  "appid": "wx71105b837c3ed050",
   "projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6",
   "debugOptions": {
     "hidedInDevtools": []
@@ -51,23 +51,47 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "plugin": {
       "list": []
     },
     "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/Home/NewsDetail/NewsDetail",
+          "pathName": "pages/Home/NewsDetail/NewsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/UserCenter/UserCenter",
+          "pathName": "pages/UserCenter/UserCenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Release/ReleaseGoodDeeds/ReleaseGoodDeeds",
+          "pathName": "pages/Release/ReleaseGoodDeeds/ReleaseGoodDeeds",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Login/PerfectInformation/PerfectInformation",
+          "pathName": "pages/Login/PerfectInformation/PerfectInformation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/Login/PerfectInformation/PerfectInformation",
+          "pathName": "pages/Login/PerfectInformation/PerfectInformation",
+          "scene": null
+        }
+      ]
     }
   }
 }

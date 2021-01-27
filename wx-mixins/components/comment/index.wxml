@@ -1,0 +1,44 @@
+<!--components/comment/index.wxml-->
+<!-- 底部回复框 -->
+<view class="w-1 fr-c bottom-view c-bg-ff" style="padding-bottom: env(safe-area-inset-bottom);" wx:if="{{!focus && !select }}" >
+	<view class="message-view p-r-30 fr-b-c">
+		<image src="{{news_writter}}" ></image>
+		<view class="flex-1 h-1 fr-s-c" bindtap="goFocus" >
+			<text class="text-line-1" >写回复</text>
+		</view>
+		<image  bindtap="bottomSelect"  src="{{news_select_img}}" ></image>
+	</view>
+</view>
+
+
+<!-- 弹出的回复框 -->
+<view style="width: 100vw;height: 100vh;position: fixed;left: 0;top: 0;z-index: 999;background-color: rgb(0,0,0,.4);" wx:if="{{focus || select }}" catchtap="failKeyBord"  >
+	<view catchtap="fail"  class="pop-keybord fr-b-c c-bg-ff"  style="bottom: {{key_height}}px;padding-bottom: {{key_height==0?env(safe-area-inset-bottom):0}};" >
+		<scroll-view scroll-y="true" class="fl-s-s flex-1 msg-input-view">
+			<view class="w-1 fl-s-s">
+				<view class="w-1 fl-s-s">
+					<textarea focus="{{focus}}" adjust-position="{{false}}"  show-confirm-bar="{{false}}"  bindinput="toMessage"  value="{{message}}"  bindkeyboardheightchange="keybord" class="w-1 " style="font-size: 26rpx;min-height:70rpx; color: #1A1A1A;" auto-height="true" placeholder="请输入回复内容" maxlength="-1" ></textarea>
+				</view>
+			<view class="w-1 fr-b-c m-t-20 warp" >
+				<view class="fr-c relative" style="width: 92rpx;height: 92rpx;" wx:for="{{imageArr}}" wx:key="index" >
+					<image src="{{item}}" mode="aspectFill" catchtap="seeBegImage" data-id="{{index}}"  style="width: 92rpx;height: 92rpx;border-radius:8rpx;"></image>
+					<image src="{{community_details_close_icon}}" catchtap="deleteImg" data-id="{{index}}" style="width: 32rpx;height: 32rpx;position: absolute;right: -14rpx;top: -14rpx;border-radius: 50%;background-color: rgb(0,0,0,.6);"></image>
+				</view>
+				
+			</view>
+			</view>
+			
+		</scroll-view>
+		
+		<view class="fl-c h-1 " style="width: 100rpx;">
+			<image src="{{news_select_img}}" bindtap="selectImage" style="width: 43rpx;height: 43rpx;margin-top:50rpx;"  ></image>
+			<view class="w-1 fr-c flex-1"  catchtap="commentSub" >
+				<text style="font-size: 28rpx;font-weight: bold;color: #0A8B6E;">回复</text>
+			</view>
+			
+		</view>
+		
+	</view>
+</view>
+
+
